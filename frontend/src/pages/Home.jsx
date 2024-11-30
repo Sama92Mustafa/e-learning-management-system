@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
-import './Home.css'; // Import the CSS file for styling
+import './Home.css'; 
 
 const Home = () => {
   const [data, setData] = useState([]);
@@ -27,10 +28,10 @@ const Home = () => {
       <h2>Courses</h2>
       <div className="grid-container">
         {data.map((item) => (
-          <div key={item._id} className="grid-item">
+          <Link to={`/courses/${item._id}`} key={item._id} className="grid-item">
             <h3>{item.title}</h3>
             <p>{item.description}</p>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

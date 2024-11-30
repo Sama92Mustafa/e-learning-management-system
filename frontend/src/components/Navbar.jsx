@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import './Navbar.css'; // Import the CSS file for styling
+import './Navbar.css'; 
 
 const Navbar = ({ isAuthenticated, onSignOut }) => {
   const location = useLocation();
