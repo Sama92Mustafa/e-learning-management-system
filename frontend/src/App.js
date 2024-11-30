@@ -8,6 +8,16 @@ import Navigation from './components/Navigation';
 
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const handleSignIn = () => {
+    setIsAuthenticated(true);
+  };
+
+  const handleSignOut = () => {
+    setIsAuthenticated(false);
+  };
+
   return (
     <Router>
       <Navbar /> {/* Add dynamic navigation */}
