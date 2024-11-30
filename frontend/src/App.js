@@ -7,6 +7,12 @@ import Profile from './pages/Profile';
 import CourseDetail from './pages/CourseDetail';
 import Navbar from './components/Navbar';
 import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import SignUp from './components/SignUp';
+import SignIn from './components/SignIn';
+import Navigation from './components/Navigation';
+
+
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -21,15 +27,15 @@ function App() {
 
   return (
     <Router>
+      <Navbar /> {/* Add dynamic navigation */}
       <div className="App">
-        <Navbar isAuthenticated={isAuthenticated} onSignOut={handleSignOut} />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/signup" element={<SignUp2 />} />
-          <Route path="/signin" element={<SignIn2 onSignIn={handleSignIn} />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/courses/:id" element={<CourseDetail />} />
           {/* Add other routes here */}
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/signin" element={<SignIn />} />
         </Routes>
       </div>
     </Router>
