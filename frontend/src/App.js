@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from './pages/Home';
-import SignUp from './pages/SignUp';
-import SignIn from './pages/SignIn';
-import Profile from './pages/Profile';
-import Navbar from './components/Navbar';
+import React from 'react';
 import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import SignUp from './components/SignUp';
+import SignIn from './components/SignIn';
+
+
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -20,14 +19,12 @@ function App() {
 
   return (
     <Router>
+      <Navbar /> {/* Add dynamic navigation */}
       <div className="App">
-        <Navbar isAuthenticated={isAuthenticated} onSignOut={handleSignOut} />
         <Routes>
-          <Route path="/" element={<Home />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/signin" element={<SignIn onSignIn={handleSignIn} />} />
-          <Route path="/profile" element={<Profile />} />
-          {/* Add other routes here */}
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/" element={<h1>Welcome to the App</h1>} />
         </Routes>
       </div>
     </Router>
