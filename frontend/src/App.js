@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
-import SignUp from './pages/SignUp';
-import SignIn from './pages/SignIn';
+import SignUp2 from './pages/SignUp';
+import SignIn2 from './pages/SignIn';
 import Profile from './pages/Profile';
 import CourseDetail from './pages/CourseDetail';
 import Navbar from './components/Navbar';
@@ -25,8 +25,8 @@ function App() {
         <Navbar isAuthenticated={isAuthenticated} onSignOut={handleSignOut} />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/signin" element={<SignIn onSignIn={handleSignIn} />} />
+          <Route path="/signup" element={<SignUp2 />} />
+          <Route path="/signin" element={<SignIn2 onSignIn={handleSignIn} />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/courses/:id" element={<CourseDetail />} />
           {/* Add other routes here */}
