@@ -1,0 +1,56 @@
+/* General Navbar Styling */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #007bff;
+    padding: 10px 20px;
+    border-radius: 10px;
+  }
+  
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .site-logo {
+    height: 50px;
+    width: auto;
+    margin-right: 15px;
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .nav-link {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  
+  .nav-link.active {
+    background-color: #0056b3;
+  }
+  
+  .nav-link:hover {
+    background-color: #0056b3;
+  }
+  
+  .signout-button {
+    background: none;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  
+  .signout-button:hover {
+    background-color: #dc3545;
+  }
+  
