@@ -5,6 +5,8 @@ import './Home.css'; // Import the CSS file for styling
 const Home = () => {
   const [data, setData] = useState([]);
 
+  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -15,6 +17,7 @@ const Home = () => {
       }
     };
 
+    
     fetchData();
   }, []);
 
@@ -36,5 +39,16 @@ const Home = () => {
     </div>
   );
 };
+
+
+const handleDelete = (id) => {
+  axios.delete(`http://localhost:5000/api/courses/${id}`)
+    .then(() => alert('Course deleted successfully!'))
+    .catch(error => console.error('Error deleting course:', error));
+};
+
+return (
+  <button onClick={() => handleDelete(course._id)}>Delete</button>
+);
 
 export default Home;
