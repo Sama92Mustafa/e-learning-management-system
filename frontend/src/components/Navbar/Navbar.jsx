@@ -1,64 +1,61 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Navbar.css';
-import logo from '../../logo.jpg'; // Adjust the path if needed
+import logo from '../../logo.jpg';
 
-const Navbar = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Simulate user authentication
-  const location = useLocation(); // Get the current route
-  const navigate = useNavigate(); // For navigation on signout
+const Navbar = ({ isAuthenticated }) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [scrollPosition, setScrollPosition] = useState(0);
 
-  // Simulate login status (replace with actual logic later)
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    setIsLoggedIn(!!token); // If token exists, user is logged in
+    const handleScroll = () => {
+      setScrollPosition(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll); // Cleanup listener
+    };
   }, []);
 
-  // Handle Signout
   const handleSignOut = () => {
-    localStorage.removeItem('token'); // Clear the token
-    setIsLoggedIn(false); // Update login state
-    navigate('/signin'); // Redirect to SignIn page
+    localStorage.removeItem('token');
+    navigate('/signin');
   };
 
   return (
     <nav className="navbar">
       <div className="logo-container">
         <img src={logo} alt="Site Logo" className="site-logo" />
+        <h1 className="site-title">e-Learning System</h1>
       </div>
       <div className="nav-links">
-        {/* Links visible to all users */}
-        <Link to="/" className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}>
-          Home
+      <Link to="/landing" className={`nav-link ${location.pathname === '/landing' ? 'active' : ''}`}>
+          <h2>Welcome</h2>
         </Link>
-
-        {/* Links for logged-in users */}
-        {isLoggedIn ? (
+       
+        {isAuthenticated ? (
           <>
-            <Link
-              to="/myprofile"
-              className={`nav-link ${location.pathname === '/myprofile' ? 'active' : ''}`}
-            >
-              My Profile
+            <Link to="/" className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}>
+                <h2>Home</h2>
             </Link>
+        
+            <Link to="/myprofile" className={`nav-link ${location.pathname === '/myprofile' ? 'active' : ''}`}>
+              <h2>My Profile</h2>
+            </Link>
+            
             <button onClick={handleSignOut} className="nav-link signout-button">
-              Sign Out
+              <h2>Sign Out</h2>
             </button>
           </>
         ) : (
-          // Links for logged-out users
           <>
-            <Link
-              to="/signin"
-              className={`nav-link ${location.pathname === '/signin' ? 'active' : ''}`}
-            >
-              Sign In
+            <Link to="/signin" className={`nav-link ${location.pathname === '/signin' ? 'active' : ''}`}>
+              <h2>Sign In</h2>
             </Link>
-            <Link
-              to="/signup"
-              className={`nav-link ${location.pathname === '/signup' ? 'active' : ''}`}
-            >
-              Sign Up
+            <Link to="/signup" className={`nav-link ${location.pathname === '/signup' ? 'active' : ''}`}>
+              <h2>Sign Up</h2>
             </Link>
           </>
         )}

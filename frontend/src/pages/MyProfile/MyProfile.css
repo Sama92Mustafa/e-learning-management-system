@@ -1,0 +1,29 @@
+.my-profile-container {
+  padding: 2rem;
+  max-width: 800px;
+  margin: auto;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.user-info, .enrolled-courses {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 5px;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-info h2, .enrolled-courses h2 {
+  color: #333333;
+}
+
+.enrolled-courses ul {
+  list-style-type: disc;
+  padding-left: 2rem;
+}
+
+.enrolled-courses ul li {
+  margin-bottom: 1rem;
+}

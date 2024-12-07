@@ -14,10 +14,11 @@
   }
   
   .site-logo {
-    height: 50px;
-    width: auto;
-    margin-right: 15px;
+    width: 100px; /* Adjust the width */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 5px; /* Optional: Keeps the logo edges smooth */
   }
+  
   
   .nav-links {
     display: flex;

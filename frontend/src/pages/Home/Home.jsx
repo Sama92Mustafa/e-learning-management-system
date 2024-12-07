@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './Home.css';
-import logo from '../../logo.jpg'; // Adjusted path for logo in `src/`
-
 
 const Home = () => {
   const [courses, setCourses] = useState([]); // State for course list
@@ -20,17 +18,18 @@ const Home = () => {
   // Handle adding a new course
   const handleCreate = (e) => {
     e.preventDefault();
-    if (!newCourse.title || !newCourse.description) {
-      alert('Please fill out both Title and Description');
-      return;
-    }
-    axios.post('http://localhost:5000/api/courses', newCourse)
+    const token = localStorage.getItem('token'); // Get the logged-in user's token
+    axios
+      .post('http://localhost:5000/api/courses', newCourse, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
       .then((response) => {
         setCourses([...courses, response.data]); // Add new course to list
         setNewCourse({ title: '', description: '' }); // Reset form
       })
       .catch((error) => console.error('Error creating course:', error));
   };
+  
 
   // Handle starting to edit a course
   const handleEdit = (course) => {
